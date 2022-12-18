@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LimitDto {
+    private Long bankAccount;
     private String limitType;
     private double limitSum;
     private String dateTime;

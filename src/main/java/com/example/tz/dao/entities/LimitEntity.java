@@ -7,10 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "limits")
@@ -20,8 +17,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class LimitEntity {
 
-    @Id
-    private String limitType;
+    @EmbeddedId
+    private LimitEntityPk pk;
 
     @Column(name = "limit_sum")
     private double limitSum;
@@ -34,7 +31,8 @@ public class LimitEntity {
 
     public LimitDto toDto() {
         return new LimitDto(
-                limitType,
+                pk.getBankAccount(),
+                pk.getLimitType(),
                 limitSum,
                 dateTime,
                 limitRemains

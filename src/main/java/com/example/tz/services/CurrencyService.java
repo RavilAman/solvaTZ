@@ -57,7 +57,7 @@ public class CurrencyService {
     }
 
 
-    @Scheduled(cron = "${cron.expression}")
+    @Scheduled(cron = "${cron.currencySet}")
     @Transactional
     public void setCurrency() {
         currencyRepository.setCurrency("KZT", getCurrency(kztLink));

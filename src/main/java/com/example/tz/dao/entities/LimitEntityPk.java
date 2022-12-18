@@ -1,17 +1,19 @@
-package com.example.tz.web;
+package com.example.tz.dao.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+
+@Embeddable
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class SaveLimitDto {
+@NoArgsConstructor
+public class LimitEntityPk implements Serializable {
     private Long bankAccount;
     private String limitType;
-    private double limitSum;
 }

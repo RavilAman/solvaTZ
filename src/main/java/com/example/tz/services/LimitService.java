@@ -10,4 +10,6 @@ public interface LimitService {
     List<LimitDto> getLimits();
 
     void changeLimit(SaveLimitDto saveLimitDto);
+
+    LimitDto createLimitForAccount(SaveLimitDto saveLimitDto);
 }

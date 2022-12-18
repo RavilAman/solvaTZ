@@ -19,6 +19,11 @@ public class LimitController {
         return limitService.getLimits();
     }
 
+    @PostMapping
+    public LimitDto postLimit(@RequestBody SaveLimitDto saveLimitDto) {
+        return limitService.createLimitForAccount(saveLimitDto);
+    }
+
     @PutMapping
     public void changeLimit(@RequestBody SaveLimitDto saveLimitDto) {
         limitService.changeLimit(saveLimitDto);

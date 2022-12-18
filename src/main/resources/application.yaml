@@ -25,4 +25,5 @@ web:
   apiKey: d1615d72e26a4f17bdc4b394ff483492
 
 cron:
-  expression: '0 0 0 * * MON-FRI'
+  currencySet: '0 0 0 * * MON-FRI'
+  monthLimit: '0 0 0 1 * *'
