@@ -23,19 +23,23 @@ public class LimitEntity {
     @Column(name = "limit_sum")
     private double limitSum;
 
-    @Column(name = "date_time")
-    private String dateTime;
+    @Column(name = "limit_datetime")
+    private String limitDatetime;
 
     @Column(name = "limit_remains")
     private double limitRemains;
+
+    @Column(name = "limit_currency_shortname")
+    private String limitCurrencyShortname;
 
     public LimitDto toDto() {
         return new LimitDto(
                 pk.getBankAccount(),
                 pk.getLimitType(),
                 limitSum,
-                dateTime,
-                limitRemains
+                limitDatetime,
+                limitRemains,
+                limitCurrencyShortname
         );
     }
 }

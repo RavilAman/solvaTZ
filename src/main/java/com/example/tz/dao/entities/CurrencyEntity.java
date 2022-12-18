@@ -23,7 +23,4 @@ public class CurrencyEntity {
 
     @Column
     private double close;
-
-    @Column(name = "previous_close")
-    private double previousClose;
 }

@@ -23,8 +23,8 @@ public class LimitServiceImpl implements LimitService{
     private final LimitRepository limitRepository;
 
     @Override
-    public List<LimitDto> getLimits() {
-        return limitRepository.findAll().stream().map(LimitEntity::toDto).collect(Collectors.toList());
+    public List<LimitDto> getLimits(Long bankAccount) {
+        return limitRepository.getLimitEntitiesBy(bankAccount).stream().map(LimitEntity::toDto).collect(Collectors.toList());
     }
 
     @Transactional
@@ -43,7 +43,8 @@ public class LimitServiceImpl implements LimitService{
                         new LimitEntityPk(saveLimitDto.getBankAccount(), saveLimitDto.getLimitType()),
                         0,
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXXX", Locale.getDefault()).format(new Date()),
-                        0
+                        0,
+                        "USD"
                 )
         ).toDto();
     }
