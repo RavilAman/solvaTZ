@@ -1,23 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/transaction_db
+    url: jdbc:postgresql://localhost:${settings.databasePort}/${settings.databaseName}
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: mvt_096
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        jdbc:
-          lob:
-            non_contextual_creation: true
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    username: ${settings.databaseUsername}
+    password: ${settings.databasePassword}
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    url: jdbc:postgresql://localhost:${settings.databasePort}/${settings.databaseName}
+    user: ${settings.databaseUsername}
+    password: ${settings.databasePassword}
+    baseline-version: 1.0
 
 web:
   kztLink: https://api.twelvedata.com/time_series?symbol=USD/KZT&interval=1day&outputsize=5&apikey=${web.apiKey}
@@ -27,3 +20,9 @@ web:
 cron:
   currencySet: '0 0 0 * * MON-FRI'
   monthLimit: '0 0 0 1 * *'
+
+settings:
+  databasePort: 5432
+  databaseName: transaction_db
+  databaseUsername: postgres
+  databasePassword: mvt_096
