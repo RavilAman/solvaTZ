@@ -22,7 +22,7 @@ cron:
   monthLimit: '0 0 0 1 * *'
 
 settings:
-  databasePort: 5432
-  databaseName: transaction_db
-  databaseUsername: postgres
-  databasePassword: mvt_096
+  databasePort: # тут указать собственные настройки
+  databaseName: # тут указать собственные настройки
+  databaseUsername: # тут указать собственные настройки
+  databasePassword: # тут указать собственные настройки
