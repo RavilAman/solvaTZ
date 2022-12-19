@@ -29,17 +29,13 @@ public class LimitEntity {
     @Column(name = "limit_remains")
     private double limitRemains;
 
-    @Column(name = "limit_currency_shortname")
-    private String limitCurrencyShortname;
-
     public LimitDto toDto() {
         return new LimitDto(
                 pk.getBankAccount(),
                 pk.getLimitType(),
                 limitSum,
                 limitDatetime,
-                limitRemains,
-                limitCurrencyShortname
+                limitRemains
         );
     }
 }

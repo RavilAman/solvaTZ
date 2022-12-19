@@ -43,8 +43,7 @@ public class LimitServiceImpl implements LimitService{
                         new LimitEntityPk(saveLimitDto.getBankAccount(), saveLimitDto.getLimitType()),
                         0,
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXXX", Locale.getDefault()).format(new Date()),
-                        0,
-                        "USD"
+                        0
                 )
         ).toDto();
     }

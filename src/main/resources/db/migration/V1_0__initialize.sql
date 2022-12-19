@@ -8,7 +8,6 @@ create table limits
 (
     bank_account             varchar(10)  not null,
     limit_type               varchar not null,
-    limit_currency_shortname varchar,
     limit_datetime           varchar,
     limit_remains            double precision,
     limit_sum                double precision,
@@ -27,3 +26,14 @@ create table transactions
     limit_exceeded      boolean,
     sum                 double precision
 );
+
+create table limit_exceed_history
+(
+    limit_exceed_history_id      bigserial
+        primary key,
+    transaction_initiator_bank_account varchar(10),
+    limit_type               varchar not null,
+    limit_sum                double precision,
+    limit_datetime           varchar,
+    limit_currency_shortname varchar
+)

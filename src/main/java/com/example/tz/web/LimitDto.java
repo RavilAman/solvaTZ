@@ -16,5 +16,4 @@ public class LimitDto {
     private double limitSum;
     private String limitDateTime;
     private double limitRemains;
-    private String limitCurrencyShortname;
 }

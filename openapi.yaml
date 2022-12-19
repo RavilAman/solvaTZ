@@ -118,9 +118,6 @@ components:
           type: number
           format: double
           example: 1200.0
-        limitCurrencyShortname:
-          type: string
-          example: 'USD'
     saveLimitDto:
       type: object
       properties:
@@ -133,7 +130,7 @@ components:
         limitSum:
           type: number
           format: double
-          example: 1500.0
+          example: 1700.0
     saveLimitDtoEx1:
       type: object
       properties:
@@ -195,6 +192,6 @@ components:
         limitDateTime:
           type: string
           example: '2022-12-19 00:27:42+06:00'
-        limitCurrencyShortname:
+        limitCurrencyShortName:
           type: string
           example: 'USD'

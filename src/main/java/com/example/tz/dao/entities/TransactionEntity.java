@@ -20,11 +20,11 @@ import java.time.LocalDateTime;
                 "transactions.date_time as dateTime, " +
                 "transactions.expense_category as expenseCategory, " +
                 "transactions.sum as sum, " +
-                "limits.limit_sum as limitSum, " +
-                "limits.limit_datetime as limitDateTime, " +
-                "limits.limit_currency_shortname as limitCurrencyShortName\n" +
+                "limit_exceed_history.limit_sum as limitSum, " +
+                "limit_exceed_history.limit_datetime as limitDateTime, " +
+                "limit_exceed_history.limit_currency_shortname as limitCurrencyShortName\n" +
                 "from transactions\n" +
-                "left join limits on transactions.account_from = limits.bank_account and transactions.expense_category = limits.limit_type\n" +
+                "left join limit_exceed_history on transactions.account_from = limit_exceed_history.transaction_initiator_bank_account and transactions.expense_category = limit_exceed_history.limit_type\n" +
                 "where transactions.limit_exceeded = true and transactions.account_from = :bankAccount",
         resultSetMapping = "limit_exceeded_transaction_dto"
 )

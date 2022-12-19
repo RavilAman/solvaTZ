@@ -2,8 +2,10 @@ package com.example.tz.services;
 
 import com.example.tz.dao.entities.LimitEntity;
 import com.example.tz.dao.entities.LimitEntityPk;
+import com.example.tz.dao.entities.LimitExceedHistoryEntity;
 import com.example.tz.dao.entities.TransactionEntity;
 import com.example.tz.dao.repos.CurrencyRepository;
+import com.example.tz.dao.repos.LimitExceedHistoryRepository;
 import com.example.tz.dao.repos.LimitRepository;
 import com.example.tz.dao.repos.TransactionRepository;
 import com.example.tz.web.LimitExceededTransactionDto;
@@ -26,6 +28,8 @@ public class TransactionServiceImpl implements TransactionService{
 
     private final CurrencyRepository currencyRepository;
 
+    private final LimitExceedHistoryRepository limitExceedHistoryRepository;
+
     @Override
     @Transactional
     public void createTransaction(SaveTransactionDto saveTransactionDto) {
@@ -34,6 +38,19 @@ public class TransactionServiceImpl implements TransactionService{
         double transactionInUSD = saveTransactionDto.getSum() / currencyRepository.getCurrencyEntityByCurrencyType(saveTransactionDto.getCurrencyShortname()).getClose();
         boolean limitExceeded = limitEntity.getLimitRemains() - transactionInUSD < 0;
         limitRepository.changeLimitRemainder(limitEntityPk, transactionInUSD);
+
+        if (limitExceeded) {
+            limitExceedHistoryRepository.save(
+                    new LimitExceedHistoryEntity(
+                            null,
+                            saveTransactionDto.getAccountFrom(),
+                            saveTransactionDto.getExpenseCategory(),
+                            limitEntity.getLimitSum(),
+                            limitEntity.getLimitDatetime(),
+                            "USD"
+                    )
+            );
+        }
 
         transactionRepository.save(
                 new TransactionEntity(
