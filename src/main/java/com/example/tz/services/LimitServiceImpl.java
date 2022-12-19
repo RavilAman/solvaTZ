@@ -23,7 +23,7 @@ public class LimitServiceImpl implements LimitService{
     private final LimitRepository limitRepository;
 
     @Override
-    public List<LimitDto> getLimits(Long bankAccount) {
+    public List<LimitDto> getLimits(String bankAccount) {
         return limitRepository.getLimitEntitiesBy(bankAccount).stream().map(LimitEntity::toDto).collect(Collectors.toList());
     }
 

@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SaveTransactionDto {
-    private long accountFrom;
-    private long accountTo;
+    private String accountFrom;
+    private String accountTo;
     private String currencyShortname;
     private double sum;
     private String expenseCategory;

@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Solva Technical Task'
+  description: 'Terms of reference for selection for an interview'
+  contact:
+    name: Ravil
+    email: ravil.aman.job@gmail.com
+servers:
+  - url: "http://localhost:8080"
+paths:
+  /limits:
+    description: Limits resource. You can create a limit for an account and type, set a new limit
+    post:
+      tags:
+        - limits
+      description: Post a limit for an account before making transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saveLimitDtoEx1'
+      responses:
+        200:
+          description: Successfully created a limit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/limit"
+    put:
+      tags:
+        - limits
+      description: Set your own limit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saveLimitDto'
+      responses:
+        200:
+          description: Successfully changed a limit
+  /limits/{bankAccount}:
+    get:
+        tags:
+          - limits
+        description: Get your declared limits.
+        parameters:
+          - name: bankAccount
+            required: true
+            in: path
+            description: your bank account number
+            schema:
+              type: string
+              example: '3412501239'
+        responses:
+          200:
+            description: Successfully returned your declared limits
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/limit'
+  /transactions:
+    post:
+      tags:
+        - transactions
+      description: Post a transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/saveTransactionDto'
+      responses:
+        200:
+          description: Successfully created a transaction
+  /transactions/{bankAccount}:
+    get:
+      tags:
+        - transactions
+      description: Get all your limit exceeded transactions
+      parameters:
+        - name: bankAccount
+          required: true
+          in: path
+          description: your bank account number
+          schema:
+            type: string
+            example: '3412501239'
+      responses:
+        200:
+          description: Successfully retrieved all limit exceeded transactions
+          content:
+            application/json:
+              schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/limitExceededTransactions'
+components:
+  schemas:
+    limit:
+      type: object
+      properties:
+        bankAccount:
+          type: string
+          example: '3412501239'
+        limitType:
+          type: string
+          example: 'product'
+        limitSum:
+          type: number
+          format: double
+          example: 1500.0
+        limitDateTime:
+          type: string
+          example: '2022-12-19 00:27:42+06:00'
+        limitRemains:
+          type: number
+          format: double
+          example: 1200.0
+        limitCurrencyShortname:
+          type: string
+          example: 'USD'
+    saveLimitDto:
+      type: object
+      properties:
+        bankAccount:
+          type: string
+          example: '3412501239'
+        limitType:
+          type: string
+          example: 'product'
+        limitSum:
+          type: number
+          format: double
+          example: 1500.0
+    saveLimitDtoEx1:
+      type: object
+      properties:
+        bankAccount:
+          type: string
+          example: '0032149652'
+        limitType:
+          type: string
+          example: 'service'
+        limitSum:
+          type: number
+          format: double
+          example: 0.0
+    saveTransactionDto:
+      type: object
+      properties:
+        accountFrom:
+          type: string
+          example: '3412501239'
+        accountTo:
+          type: string
+          example: '5901324506'
+        currencyShortname:
+          type: string
+          example: 'KZT'
+        sum:
+          type: number
+          format: double
+          example: 85341.32
+        expenseCategory:
+          type: string
+          example: 'product'
+    limitExceededTransactions:
+      type: object
+      properties:
+        accountFrom:
+          type: string
+          example: '3412501239'
+        accountTo:
+          type: string
+          example: '5901324506'
+        currencyShortname:
+          type: string
+          example: 'KZT'
+        sum:
+          type: number
+          format: double
+          example: 85341.32
+        expenseCategory:
+          type: string
+          example: 'product'
+        dateTime:
+          type: string
+          example: '2022-12-19 00:27:42+06:00'
+        limitSum:
+          type: number
+          format: double
+          example: 1500.0
+        limitDateTime:
+          type: string
+          example: '2022-12-19 00:27:42+06:00'
+        limitCurrencyShortname:
+          type: string
+          example: 'USD'

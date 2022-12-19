@@ -15,7 +15,7 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @GetMapping("/{bankAccount}")
-    public List<LimitExceededTransactionDto> getLimitExceededTransactions(@PathVariable Long bankAccount) {
+    public List<LimitExceededTransactionDto> getLimitExceededTransactions(@PathVariable String bankAccount) {
         return transactionService.getLimitExceededTransactions(bankAccount);
     }
 

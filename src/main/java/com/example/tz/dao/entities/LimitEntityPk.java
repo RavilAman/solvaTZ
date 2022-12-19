@@ -14,6 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LimitEntityPk implements Serializable {
-    private Long bankAccount;
+    private String bankAccount;
     private String limitType;
 }

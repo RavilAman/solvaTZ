@@ -50,7 +50,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<LimitExceededTransactionDto> getLimitExceededTransactions(Long bankAccount) {
+    public List<LimitExceededTransactionDto> getLimitExceededTransactions(String bankAccount) {
         return transactionRepository.getLimitExceededTransactions(bankAccount);
     }
 }

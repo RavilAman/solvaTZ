@@ -27,5 +27,5 @@ public interface LimitRepository extends JpaRepository<LimitEntity, String> {
     LimitEntity getLimitEntityByPk(LimitEntityPk pk);
 
     @Query("select l from LimitEntity l where l.pk.bankAccount = ?1")
-    List<LimitEntity> getLimitEntitiesBy(Long bankAccount);
+    List<LimitEntity> getLimitEntitiesBy(String bankAccount);
 }

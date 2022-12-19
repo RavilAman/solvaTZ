@@ -6,7 +6,7 @@ create table currencies
 
 create table limits
 (
-    bank_account             bigint  not null,
+    bank_account             varchar(10)  not null,
     limit_type               varchar not null,
     limit_currency_shortname varchar,
     limit_datetime           varchar,
@@ -19,8 +19,8 @@ create table transactions
 (
     transaction_id      bigserial
         primary key,
-    account_from        bigint,
-    account_to          bigint,
+    account_from        varchar(10),
+    account_to          varchar(10),
     currency_short_name varchar,
     date_time           varchar,
     expense_category    varchar,

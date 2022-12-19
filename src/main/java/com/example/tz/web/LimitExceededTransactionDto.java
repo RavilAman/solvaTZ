@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LimitExceededTransactionDto {
-    private long accountFrom;
-    private long accountTo;
+    private String accountFrom;
+    private String accountTo;
     private String currencyShortName;
     private double sum;
     private String expenseCategory;

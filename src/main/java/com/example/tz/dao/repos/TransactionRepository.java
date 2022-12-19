@@ -14,6 +14,6 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
 
     @Query(name = "get_limit_exceeded_transactions", nativeQuery = true)
-    List<LimitExceededTransactionDto> getLimitExceededTransactions(@Param("bankAccount") Long bankAccount);
+    List<LimitExceededTransactionDto> getLimitExceededTransactions(@Param("bankAccount") String bankAccount);
 
 }

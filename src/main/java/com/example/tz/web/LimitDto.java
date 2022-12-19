@@ -6,17 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class LimitDto {
-    private Long bankAccount;
+    private String bankAccount;
     private String limitType;
     private double limitSum;
-    private String dateTime;
+    private String limitDateTime;
     private double limitRemains;
     private String limitCurrencyShortname;
 }

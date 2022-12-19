@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface LimitService {
 
-    List<LimitDto> getLimits(Long bankAccount);
+    List<LimitDto> getLimits(String bankAccount);
 
     void changeLimit(SaveLimitDto saveLimitDto);
 

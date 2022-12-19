@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TransactionService {
     void createTransaction(SaveTransactionDto saveTransactionDto);
-    List<LimitExceededTransactionDto> getLimitExceededTransactions(Long bankAccount);
+    List<LimitExceededTransactionDto> getLimitExceededTransactions(String bankAccount);
 }

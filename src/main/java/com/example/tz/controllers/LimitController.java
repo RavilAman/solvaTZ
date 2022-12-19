@@ -15,7 +15,7 @@ public class LimitController {
     private final LimitService limitService;
 
     @GetMapping("/{bankAccount}")
-    public List<LimitDto> getLimits(@PathVariable Long bankAccount) {
+    public List<LimitDto> getLimits(@PathVariable String bankAccount) {
         return limitService.getLimits(bankAccount);
     }
 

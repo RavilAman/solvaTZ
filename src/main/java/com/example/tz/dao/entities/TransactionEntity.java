@@ -33,8 +33,8 @@ import java.time.LocalDateTime;
         classes = @ConstructorResult(
                 targetClass = LimitExceededTransactionDto.class,
                 columns = {
-                        @ColumnResult(name = "accountFrom", type = Long.class),
-                        @ColumnResult(name = "accountTo", type = Long.class),
+                        @ColumnResult(name = "accountFrom", type = String.class),
+                        @ColumnResult(name = "accountTo", type = String.class),
                         @ColumnResult(name = "currencyShortName", type = String.class),
                         @ColumnResult(name = "sum", type = Double.class),
                         @ColumnResult(name = "expenseCategory", type = String.class),
@@ -58,10 +58,10 @@ public class TransactionEntity {
     private Long transactionId;
 
     @Column(name = "account_from")
-    private long accountFrom;
+    private String accountFrom;
 
     @Column(name = "account_To")
-    private long accountTo;
+    private String accountTo;
 
     @Column(name = "currency_short_name")
     private String currencyShortName;
